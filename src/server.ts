@@ -6,8 +6,8 @@ import InstagramSearch from './controllers/InstagramSearch';
 import SaveDataController from './controllers/SaveDataController'
 
 const server = express();
-
-server.listen(3001);
+const port = process.env.PORT || 3001;
+server.listen(port);
 server.use(express.json());
 server.use(cors());
 server.use(routes);
