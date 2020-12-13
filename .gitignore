@@ -5,3 +5,4 @@ node_modules*
 .prettierrc*
 yarn.lock*
 yarn-error.log*
+./build*
