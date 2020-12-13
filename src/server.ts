@@ -1,25 +1,18 @@
 import express from 'express';
-import { Request, Response } from 'express';
-import cheerio from 'cheerio';
-import Axios from 'axios';
-import fetch from 'node-fetch';
+import cors from 'cors';
+
+import routes from './routes';
+import InstagramSearch from './controllers/InstagramSearch';
+import SaveDataController from './controllers/SaveDataController'
 
 const server = express();
 
-server.listen(3000);
+server.listen(3001);
+server.use(express.json());
+server.use(cors());
+server.use(routes);
 
-const URL = 'https://www.instagram.com/derso.f/?__a=1';
+routes.get('/instagram/:username', InstagramSearch.search);
+routes.post('/user', SaveDataController.store);
 
-const busca = async () => {
-  const { data } = await Axios.get(URL).catch(() => ({} as any));
-  let $ = cheerio.load(data);
-  let page = $('user').each((index: any, value: any) => {
-    const data = {
-      index: index,
-      value: value,
-    };
-    return data;
-  });
-  console.log(page);
-};
-console.log(busca());
+export default server;
