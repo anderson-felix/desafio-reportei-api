@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/app.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "build": "tsc",
+    "start": "node build/app.js"
   },
   "dependencies": {
     "@typegoose/typegoose": "7.4.5",
