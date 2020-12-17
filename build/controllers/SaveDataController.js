@@ -1,6 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const UserModel_1 = require("../models/UserModel");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+const UserModel_1 = require('../models/UserModel');
 class SaveDataController {
     async store(req, res) {
         const { userData } = req.body;
