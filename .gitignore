@@ -1,7 +1,5 @@
 node_modules*
-.editorconfig*
-.eslintignore*
 .eslintrc.json*
-.prettierrc*
+prettier.config.js*
 yarn.lock*
 yarn-error.log*

@@ -1,8 +1,5 @@
 import Axios from 'axios';
 import { Request, Response } from 'express';
-import * as Yup from 'yup';
-
-import { userModel } from './../models/UserModel';
 
 class InstagramSearch {
   async search(req: Request, res: Response) {
@@ -12,7 +9,7 @@ class InstagramSearch {
 
     const { data } = await Axios.get(URL).catch(() => ({} as any));
 
-    if(!data) return res.status(200).json({error: 'USER_NOT_FOUND'});
+    if (!data) return res.status(400).json({ error: 'USER_NOT_FOUND' });
 
     const userData = {
       profile_pic_url: data.graphql.user.profile_pic_url,
@@ -27,7 +24,8 @@ class InstagramSearch {
       business_category_name: data.graphql.user.business_category_name,
       follow: data.graphql.user.edge_follow.count,
       followed_by: data.graphql.user.edge_followed_by.count,
-      timeline_media_count: data.graphql.user.edge_owner_to_timeline_media.count,
+      timeline_media_count:
+        data.graphql.user.edge_owner_to_timeline_media.count,
     };
 
     return res.status(200).json(userData);
