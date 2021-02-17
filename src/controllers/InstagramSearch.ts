@@ -9,6 +9,8 @@ class InstagramSearch {
 
     const { data } = await Axios.get(URL).catch(() => ({} as any));
 
+    console.log(typeof data);
+
     if (!data) return res.status(400).json({ error: 'USER_NOT_FOUND' });
 
     const userData = {
